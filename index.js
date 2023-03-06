@@ -33,7 +33,7 @@ app.post("/chat", async (req, res) => {
 		const prompt_translate = await axios.get(url);
 		const translation = prompt_translate.data.responseData.translatedText;
 		
-		// function  translateText(sourceLang, targetLang, callback){
+		
 		// 	const url = 'https://api.mymemory.translated.net/get?q=' + encodeURIComponent(prompt) +
 		// 	'&langpair=' + encodeURIComponent(sourceLang + '|' + targetLang) +
 		// 	'&key=' + encodeURIComponent('93100eebb0a43622fe32');
@@ -65,8 +65,6 @@ app.post("/chat", async (req, res) => {
         // const { message ,  Model  } = req.body
 		const response = await openai.createCompletion({
 			model: "text-davinci-003",
-            // model:`${message}`,
-			// prompt: `Remove html tags and Extract keywords from this text:${prompt}`,
 			prompt: "Exprime toi amicalement et utilise des emojis.  propose directement une solution et des directives techniques qu'importe le type de question en repondant a ce:" + translation,
 			temperature: 1,
 			max_tokens: 250,
