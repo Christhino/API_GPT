@@ -1,16 +1,11 @@
 const path = require("path")
-const express = require("express")
-const request = require('request');
+const express = require("express");
 const axios = require('axios');
 const bodyParser = require("body-parser")
 
 const cors = require('cors');
 require('dotenv').config();
 const { Configuration, OpenAIApi } = require("openai")
-// const { API_KEY } = require("./config")
-// // const config = new Configuration({
-// //     apiKey: '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'
-// // });
 
 const API_KEY = "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"
 
