@@ -45,7 +45,7 @@ module.exports = {
                 model: "text-davinci-003",
                 prompt:`extract technical keywords from this article text with the most important keywords by using fewer keywords: article title: ${translation_t} . article body: ${translation}`,
                 temperature: 0.5,
-                max_tokens: 60,
+                max_tokens: 1400,
                 top_p: 1.0,
                 frequency_penalty: 0.8,
                 presence_penalty: 0.0,
