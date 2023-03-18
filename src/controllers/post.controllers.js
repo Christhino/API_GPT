@@ -30,20 +30,10 @@ module.exports = {
     store: async(req, res, next) => {
         try {
             const prompt = req.body.body  
-            const title =  req.body.title
-
-            const url = `https://api.mymemory.translated.net/get?q=${prompt}&langpair=mg|fr`;
-            const urlTTitle =`https://api.mymemory.translated.net/get?q=${title}&langpair=mg|fr`
-            
-            const title_translate =  await axios.get(urlTTitle)
-
-            const prompt_translate = await axios.get(url);
-            const translation = prompt_translate.data.responseData.translatedText;
-            const translation_t =  title_translate.data.responseData.translatedText;
-            
+    
             const response = await openai.createCompletion({
                 model: "text-davinci-003",
-                prompt:`extract technical keywords from this article text with the most important keywords by using fewer keywords: article title: ${translation_t} . article body: ${translation}`,
+                prompt,
                 temperature: 0.5,
                 max_tokens: 1400,
                 top_p: 1.0,
@@ -52,15 +42,16 @@ module.exports = {
             })
            
 
-            let data = response.data.choices[0].text
-            const result = data.slice(12, data.length)
-
-            req.body.keywords = result
-
+            // let data = response.data.choices[0].text
+            
             postModel.create(req.body, (err, newPost) => {
-                if(err) return next(err) 
-                res.json(newPost)
+                if(response.data.choices[0].text) {
+                    res.send(JSON.stringify({
+                        message: response.data.choices[0].text
+                    }));
+                }
             })
+            
 
         } catch (error) {
             next(error)
