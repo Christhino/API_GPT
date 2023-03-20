@@ -16,7 +16,7 @@ module.exports = {
 
             const response = await openai.createCompletion({
                 model: "text-davinci-003",
-                prompt:`Genere moi  un contenu  publicitaire dans le titre est ${title} qui parle de :${body}`,
+                prompt:`Genere moi  un contenu  publicitaire de 200 mots  dans le titre est ${title} qui parle de :${body}`,
                 temperature: 0.5,
                 max_tokens: 1400,
                 top_p: 1.0,
