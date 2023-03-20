@@ -33,7 +33,9 @@ app.use(express.static("./public"))
 
 app.use('/api/posts', require('./src/routes/post.route'))
 
-app.use('/api/responses', require('./src/routes/response.route'))
+app.use('/api/motivation', require('./src/routes/motivation.route'))
+
+
 
 // PRIVATE ROUTE 
  
