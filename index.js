@@ -35,7 +35,7 @@ app.use('/api/posts', require('./src/routes/post.route'))
 
 app.use('/api/motivation', require('./src/routes/motivation.route'))
 
-
+app.use('/api/contenu',  require('./src/routes/contenu.route'))
 
 // PRIVATE ROUTE 
  
