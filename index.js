@@ -38,6 +38,8 @@ app.use('/api/motivation', require('./src/routes/motivation.route'))
 app.use('/api/contenu',  require('./src/routes/contenu.route'))
 
 app.use('/api/article', require('./src/routes/article.route'))
+
+app.use('/api/paragraphe',  require('./src/routes/paragraphe.route'))
 // PRIVATE ROUTE 
  
 
