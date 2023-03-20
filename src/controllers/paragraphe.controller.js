@@ -17,7 +17,7 @@ module.exports = {
 
             const response = await openai.createCompletion({
                 model: "text-davinci-003",
-                prompt:`Genere differente paragraphe que tu vas liste  au moins 10 paragraphes  qui parle de  ${sujet} avec les motes cles  ${keywords} de facon  ${tonalite}`,
+                prompt:`Genere differente paragraphe que tu vas liste  au moins 10 paragraphes  qui parle de  ${sujet} avec les mots cles  ${keywords} de facon  ${tonalite}`,
                 temperature: 0.5,
                 max_tokens: 1400,
                 top_p: 1.0,
