@@ -10,7 +10,7 @@ const openai = new OpenAIApi(configuration);
 module.exports = {
     store: async(req,res,next) => {
        try { 
-            const bio = req.body.body
+            const  bio = req.body.body
             const  user_name =  req.body.nom 
             const  user_prenom =  req.body.prenom 
             const  title =  req.body.title 

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const paragrapheSchema = new mongoose.Schema({
-    suejt: {
+    sujet: {
         required: false,
         type: String
     },
