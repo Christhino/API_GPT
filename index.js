@@ -7,7 +7,12 @@ const cookieParser = require("cookie-parser");
 
 require("dotenv").config();
 
+const { Configuration, OpenAIApi } = require("openai");
 
+const configuration = new Configuration({
+    apiKey: env.OPENAI_API_KEY,
+  });
+const openai = new OpenAIApi(configuration); 
 
 
 const mongoose = require('mongoose');
@@ -43,8 +48,21 @@ app.use('/api/paragraphe',  require('./src/routes/paragraphe.route'))
 
 app.use('/api/annonces',  require('./src/routes/annonces.route'))
 // PRIVATE ROUTE 
- 
 
+app.post('/test', async (req, res) => {
+    const prompt = req.body.prompt;
+    const response = await openai.createCompletion({
+      model: "text-davinci-003",
+      prompt: prompt,
+      temperature: 0.7,
+      max_tokens: 60,
+      top_p: 1.0,
+      frequency_penalty: 0.0,
+      presence_penalty: 1,
+    });
+    const message = response.data.choices[0].text;
+    res.send({ message });
+  });
 app.use((req, res, next) => {
     next(createError.NotFound());
 });

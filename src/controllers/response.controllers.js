@@ -4,7 +4,7 @@ const responseModel = require("../models/response.model")
 const postModel =  require('../models/post.model') 
 
 const configuration = new Configuration({
-    apiKey: "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",
+    apiKey: env.OPENAI_API_KEY,
   });
 const openai = new OpenAIApi(configuration); 
 
