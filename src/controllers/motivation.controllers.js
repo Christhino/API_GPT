@@ -16,7 +16,7 @@ module.exports = {
             const  title =  req.body.title 
         
             const response = await openai.createCompletion({
-                model: "text-davinci-003",
+                model: "ada",
                 prompt:`Je suis ${user_name} ${user_prenom}, et je suis  ${title} voici donc mon  bio ${bio}. Genere moi une lettre de motivation`,
                 temperature: 0.5,
                 max_tokens: 1400,

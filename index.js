@@ -5,6 +5,9 @@ const morgan = require("morgan");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 
+const SibAPIV3Sdk = require('sib-api-v3-sdk')
+const { v4: uuidv4 } = require('uuid');
+const shortid = require('shortid');
 require("dotenv").config();
 
 const { Configuration, OpenAIApi } = require("openai");
@@ -48,11 +51,42 @@ app.use('/api/paragraphe',  require('./src/routes/paragraphe.route'))
 
 app.use('/api/annonces',  require('./src/routes/annonces.route'))
 // PRIVATE ROUTE 
+const defaultClient  =  SibAPIV3Sdk.ApiClient.instance;
 
+var apiKey  = defaultClient.authentications['api-key']
+apiKey.apiKey = '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'
+
+
+app.post('/api/login' ,async(req,res) => {
+  const apiInstance =  new  SibAPIV3Sdk.TransactionalEmailsApi();
+  const verificationCode = shortid.generate();
+  const sender = {
+    email: "mintsaniaina.christhino.pro@gmail.com",
+    name:"Verbalia"
+  };
+  const receivers = [
+    {
+      email : req.body.email,
+    },
+  ];
+  try {
+    const sendEmail =  await   apiInstance.sendTransacEmail({
+         sender,
+         to : receivers,
+         subject :  "Verify your email address",
+         textContent : "Login  confirmation",
+         htmlContent : `<p>Hi there!</p><p>Please use the following code to verify your email address: ${verificationCode}</p>`
+    })
+    return  res.send(sendEmail)
+  }catch(error){
+    return  res.send(error)
+  }
+  
+})
 app.post('/test', async (req, res) => {
     const prompt = req.body.prompt;
     const response = await openai.createCompletion({
-      model: "text-davinci-003",
+      model: "ada",
       prompt: prompt,
       temperature: 0.7,
       max_tokens: 60,
