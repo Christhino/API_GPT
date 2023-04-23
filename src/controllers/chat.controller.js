@@ -23,7 +23,7 @@ module.exports = {
                 presence_penalty: 0.6,
                 stop: [" Human:", " AI:"],
             })
-            annoncesModel.create(req.body, (err, newPost) => {
+            chatModel.create(req.body, (err, newPost) => {
                 if(response.data.choices[0].text) {
                     res.send(JSON.stringify({
                         message: response.data.choices[0].text
