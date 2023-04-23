@@ -50,6 +50,8 @@ app.use('/api/article', require('./src/routes/article.route'))
 app.use('/api/paragraphe',  require('./src/routes/paragraphe.route'))
 
 app.use('/api/annonces',  require('./src/routes/annonces.route'))
+
+app.use('/api/chat',  require('./src/routes/chat.route'))
 // PRIVATE ROUTE 
 const defaultClient  =  SibAPIV3Sdk.ApiClient.instance;
 
@@ -107,7 +109,7 @@ app.post('/api/confirm', async (req, res) => {
 app.post('/test', async (req, res) => {
     const prompt = req.body.prompt;
     const response = await openai.createCompletion({
-      model: "ada",
+      model: "text-davinci-002",
       prompt: prompt,
       temperature: 0.7,
       max_tokens: 60,
