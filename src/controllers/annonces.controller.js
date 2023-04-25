@@ -17,7 +17,7 @@ module.exports = {
             const  description =  req.body.description 
 
             const response = await openai.createCompletion({
-                model: "text-davinci-002",
+                model: "text-davinci-003",
                 prompt:`Genere moi  un annonces  publicitaire sur les reseau sociaux bien claire de 300 mots qui parle  de  ${description} dans le serviices est ${services} qui a une promotion de ${promotion} pour l'occasion rare  de ${Ocasion} liste au moins 3  minimum de d'annonces`,
                 temperature: 0.5,
                 max_tokens: 1400,

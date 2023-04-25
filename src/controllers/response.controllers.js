@@ -28,7 +28,7 @@ module.exports = {
             const prompt_translate = await axios.get(url);
             const translation = prompt_translate.data.responseData.translatedText;
             const response = await openai.createCompletion({
-                model: "text-davinci-002",
+                model: "text-davinci-003",
                 prompt:"Exprime toi amicalement et utilise des emojis. n'oublie de parler de facon claire et de donner a chaque dois des exemples. Propose directement une solution et des directives techniques qu'importe le type de question en repondant a ce:"+translation,
                 temperature: 1,
                 max_tokens: 400,

@@ -43,6 +43,8 @@ app.use('/api/posts', require('./src/routes/post.route'))
 
 app.use('/api/motivation', require('./src/routes/motivation.route'))
 
+app.use('/api/pai', require('./src/routes/pai.route'))
+
 app.use('/api/contenu',  require('./src/routes/contenu.route'))
 
 app.use('/api/article', require('./src/routes/article.route'))
@@ -109,7 +111,7 @@ app.post('/api/confirm', async (req, res) => {
 app.post('/test', async (req, res) => {
     const prompt = req.body.prompt;
     const response = await openai.createCompletion({
-      model: "text-davinci-002",
+      model: "text-davinci-003",
       prompt: prompt,
       temperature: 0.7,
       max_tokens: 60,
