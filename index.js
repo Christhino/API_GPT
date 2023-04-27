@@ -111,7 +111,7 @@ app.post('/api/confirm', async (req, res) => {
 app.post('/test', async (req, res) => {
     const prompt = req.body.prompt;
     const response = await openai.createCompletion({
-      model: "text-curie-001",
+      model: "text-davinci-001",
       prompt: prompt,
       temperature: 0.7,
       max_tokens: 60,

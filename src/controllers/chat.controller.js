@@ -14,7 +14,7 @@ module.exports = {
             const body  = req.body.body
             
             const response = await openai.createCompletion({
-                model: "text-curie-001",
+                model: "text-davinci-001",
                 prompt: `Ce qui suit est une conversation avec un assistant IA. L'assistant est serviable, créatif, intelligent et très sympathique.\n\nHuman: ${body}.\nAI:`,
                 temperature: 0.9,
                 max_tokens: 150,

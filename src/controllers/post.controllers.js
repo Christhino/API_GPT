@@ -32,7 +32,7 @@ module.exports = {
             const prompt = req.body.body  
     
             const response = await openai.createCompletion({
-                model: "text-curie-001",
+                model: "text-davinci-001",
                 prompt,
                 temperature: 0.5,
                 max_tokens: 1400,
